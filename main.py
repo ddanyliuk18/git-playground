@@ -22,12 +22,13 @@ def guess_is_valid(candidate):
         if count < candidate.count(letter):
             print(f"You can use letter {letter} only {count} times")
             return False
+        if candidate in guesses:
+            print("You have already guessed this word!")
+            return False
     return True
-
 
 guessed = 0
 errors = 0
-
 guesses = []
 
 WORDS_TO_WIN = 5
@@ -57,3 +58,4 @@ while not is_game_over():
     else:
         errors += 1
         print(f"Oops :( No such word, you have {ERRORS_TO_LOSE - errors} lives more")
+        print("You lost!")
